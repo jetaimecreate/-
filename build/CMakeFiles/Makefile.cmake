@@ -49,5 +49,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/image_processing.dir/DependInfo.cmake"
+  "CMakeFiles/LaneDetection.dir/DependInfo.cmake"
   )

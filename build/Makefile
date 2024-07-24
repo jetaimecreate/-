@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zqm/fd
+CMAKE_SOURCE_DIR = /home/zqm/fenli
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zqm/fd/build
+CMAKE_BINARY_DIR = /home/zqm/fenli/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zqm/fd/build/CMakeFiles /home/zqm/fd/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zqm/fenli/build/CMakeFiles /home/zqm/fenli/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zqm/fd/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zqm/fenli/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,72 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named image_processing
+# Target rules for targets named LaneDetection
 
 # Build rule for target.
-image_processing: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 image_processing
-.PHONY : image_processing
+LaneDetection: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LaneDetection
+.PHONY : LaneDetection
 
 # fast build rule for target.
-image_processing/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/build
-.PHONY : image_processing/fast
+LaneDetection/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection.dir/build.make CMakeFiles/LaneDetection.dir/build
+.PHONY : LaneDetection/fast
 
-src/ImageData.o: src/ImageData.cpp.o
-.PHONY : src/ImageData.o
-
-# target to build an object file
-src/ImageData.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/ImageData.cpp.o
-.PHONY : src/ImageData.cpp.o
-
-src/ImageData.i: src/ImageData.cpp.i
-.PHONY : src/ImageData.i
-
-# target to preprocess a source file
-src/ImageData.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/ImageData.cpp.i
-.PHONY : src/ImageData.cpp.i
-
-src/ImageData.s: src/ImageData.cpp.s
-.PHONY : src/ImageData.s
-
-# target to generate assembly for a file
-src/ImageData.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/ImageData.cpp.s
-.PHONY : src/ImageData.cpp.s
-
-src/image_processor.o: src/image_processor.cpp.o
-.PHONY : src/image_processor.o
+src/lane.o: src/lane.cpp.o
+.PHONY : src/lane.o
 
 # target to build an object file
-src/image_processor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/image_processor.cpp.o
-.PHONY : src/image_processor.cpp.o
+src/lane.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection.dir/build.make CMakeFiles/LaneDetection.dir/src/lane.cpp.o
+.PHONY : src/lane.cpp.o
 
-src/image_processor.i: src/image_processor.cpp.i
-.PHONY : src/image_processor.i
+src/lane.i: src/lane.cpp.i
+.PHONY : src/lane.i
 
 # target to preprocess a source file
-src/image_processor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/image_processor.cpp.i
-.PHONY : src/image_processor.cpp.i
+src/lane.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection.dir/build.make CMakeFiles/LaneDetection.dir/src/lane.cpp.i
+.PHONY : src/lane.cpp.i
 
-src/image_processor.s: src/image_processor.cpp.s
-.PHONY : src/image_processor.s
+src/lane.s: src/lane.cpp.s
+.PHONY : src/lane.s
 
 # target to generate assembly for a file
-src/image_processor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/image_processor.cpp.s
-.PHONY : src/image_processor.cpp.s
+src/lane.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection.dir/build.make CMakeFiles/LaneDetection.dir/src/lane.cpp.s
+.PHONY : src/lane.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection.dir/build.make CMakeFiles/LaneDetection.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -190,7 +166,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection.dir/build.make CMakeFiles/LaneDetection.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -198,7 +174,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/image_processing.dir/build.make CMakeFiles/image_processing.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/LaneDetection.dir/build.make CMakeFiles/LaneDetection.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -209,13 +185,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... image_processing"
-	@echo "... src/ImageData.o"
-	@echo "... src/ImageData.i"
-	@echo "... src/ImageData.s"
-	@echo "... src/image_processor.o"
-	@echo "... src/image_processor.i"
-	@echo "... src/image_processor.s"
+	@echo "... LaneDetection"
+	@echo "... src/lane.o"
+	@echo "... src/lane.i"
+	@echo "... src/lane.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
