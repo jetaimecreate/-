@@ -1,54 +1,34 @@
+#include "head.h"
 #include <opencv2/opencv.hpp>
-#include "image_processor.h"
-
+int x=0;
 int main() {
-    Image_Data();
-    for (const auto& imageData : imageDatas) {
-    std::string filename = "/home/zqm/fd/dataset_任务一/" + imageData.img_name;
-    std::string filename_out = "/home/zqm/fd/dataset_任务一/终/" + imageData.img_name;
-    cv::Mat inputImage = cv::imread(filename, cv::IMREAD_COLOR);
-    if (inputImage.empty()) {
-        std::cerr << "Error: Could not read image file." << std::endl;
-        return -1;
-    }
-
-    // Create output images
-    cv::Mat translatedImage, rotatedImage, scaledImage,outputImage;
-    int new_width = inputImage.cols;
-    int new_height= inputImage.rows;
-    int interpolation;
-    if((imageData.interpolation.compare("NEAREST")) == 0)
-    {interpolation=cv::INTER_NEAREST;}
-    else if((imageData.interpolation.compare("LINEAR")) == 0)
-    {interpolation=cv::INTER_LINEAR;}
-    if (imageData.img_scale.size() < 4) {
-        new_width = std::stof(imageData.img_scale) * inputImage.cols;
-        new_height = std::stof(imageData.img_scale) * inputImage.rows;
-    }
-    else{
-        std::string width, height;
-        std::stringstream a;
-        a.str(imageData.img_scale);
-        std::getline(a, width, ',');
-        std::getline(a, height, ',');
-        new_width = std::stoi(width);
-        new_height = std::stoi(height);
-    }
-    
-    
-    //cutImage(inputImage,outputImage);
-    //cv::imshow("fenli",outputImage);
-    scaleImage(inputImage,scaledImage,new_width, new_height,interpolation);  
-    translateImage(scaledImage, translatedImage,imageData.img_Horizontal,imageData.img_Vertical); // Translate by (50, 50)
-    rotateImage(translatedImage, rotatedImage,imageData.Rotation_angle,imageData.Rotation_center);        // Rotate by 30 degrees
-    //fillBlackWithWhite(scaledImage);
-    //cv::imshow("Scaled Image", scaledImage);
-    cv::imwrite(filename_out, rotatedImage);}
-    
-    // Wait for a key press
-    cv::waitKey(0);
-
-    return 0;
+	std::string input_folder = "/home/zqm/识别/dataset_任务三/archive";  // 输入图片所在文件夹路径
+	std::string output_folder = "/home/zqm/识别/dataset_任务三/output";  // 输出结果保存文件夹路径
+	std::string template_path = "/home/zqm/识别/dataset_任务三/template";  // 模板图片路径
+	std::vector<cv::String> filenames_input, filenames_template;
+	cv::glob(input_folder, filenames_input);
+	cv::glob(template_path, filenames_template);
+	for (size_t i = 0; i <filenames_template.size(); ++i){
+		for (size_t j = 0; j <filenames_input.size(); ++j){
+		// 读取两个图像
+		cv::Mat image1 = cv::imread(filenames_template[i]);
+		cv::Mat image2 = cv::imread(filenames_input[j]);
+        //1是样例
+        cv::Mat outputImage;
+        detect(image1, image2,outputImage,x,i);
+		if(x==1){
+		// 保存结果图像
+		std::string output_name = "output" + std::to_string(i)+std::to_string(j)  + ".jpg";
+		std::string output_path = output_folder + "/" + output_name;
+ 
+		// 保存结果图像到指定文件夹
+		cv::imwrite(output_path, outputImage);}
+		else{std::cout<<"no"<<std::endl;}
+		}
+	
+ }
+	
+	cv::waitKey(0);
+	return 0;
 }
-/*
-*/
+//初版想法使用了brute force匹配器，效果不好。故使用flann
